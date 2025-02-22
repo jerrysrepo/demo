@@ -52,7 +52,7 @@
             border-radius: 10px;
             z-index: 2;
             overflow: hidden;
-            transition: all 0.2s cubic-bezier(0, .7, 0, 1.05)
+            transition: all 0.3s cubic-bezier(.86, 0.7, .07, 1.05);
         }
 
         #sidebar {
@@ -67,6 +67,7 @@
             border-radius: 10px;
             color: white;
             transition: all 0.2s;
+            overflow: hidden;
         }
 
         #sidebar:hover,
@@ -79,7 +80,7 @@
         }
 
         #top-bar.active {
-            height: 200px;
+            height: 400px;
             background-color: #fff;
         }
 
@@ -111,17 +112,166 @@
 
         .sidebar-item svg {
             margin-left: 0.5em;
+            margin-right: 0.5em;
             fill: white;
+            font-size: 0.85em;
+        }
+
+        #more {
+            width: calc(100% - 32px);
+            height: 157px;
+            margin-top: 43px;
+            margin-left: 16px;
+            border-bottom-right-radius: 10px;
+            font-family: 'Figtree', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            justify-content: space-between;
+            scrollbar-width: none;
+            transition: all 0.3s cubic-bezier(.86, 0.7, .07, 1.05);
+        }
+
+        #top-bar.active #more {
+            height: 357px;
+        }
+
+        #more::-webkit-scrollbar {
+            width: none;
+        }
+
+        #more>div>div {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 15px;
+            margin-right: 30px;
+        }
+
+        .more-title {
+            font-weight: bold;
+        }
+
+        .more-item {
+            font-size: 20px;
+        }
+
+        #more-tip {
+            display: none;
+            position: absolute;
+            bottom: 10px;
+            color: transparent;
+            transition: all 0.2s;
+        }
+
+        #more-tip svg {
+            height: 0.75em;
+            fill: none;
+            transition: all 0.2s;
+        }
+
+        #more.active #more-tip {
+            color: black;
+        }
+
+        #more.active #more-tip svg {
+            fill: black;
+        }
+
+        .chevron-down {
+            margin-right: 0 !important;
+        }
+
+        @media (max-width: 1024px) {
+
+            .sidebar-item,
+            video {
+                display: none;
+            }
+
+            #top-bar {
+                transition-timing-function: cubic-bezier(1, 0, 0, 1);
+                background-color: #fff;
+            }
+
+            #sidebar {
+
+                justify-content: space-between;
+            }
+
+            #home {
+            margin-left: 10px;
+                background-image: url(./svgviewer-output.svg) !important;
+            }
+
+            #top-bar.active {
+                height: calc(100vh - 30px);
+            }
+
+            #top-bar #more {
+                height: 0;
+                grid-template-columns: 1fr;
+            }
+
+            #top-bar.active #more {
+                display: grid;
+            }
+
+            #more.active {
+                width: calc(100% - 32px);
+                height: calc(100vh - 75px) !important;
+                display: grid;
+                overflow-x: hidden;
+                overflow-y: scroll;
+            }
+
+            #more>div>div {
+                display: unset;
+            }
+
+            .more-item {
+                white-space: unset;
+            }
+
+            #more-tip {
+                display: none;
+            }
+
+            #sidebar-search,
+            #sidebar-info-for {
+                display: flex;
+                color: #000;
+            }
+
+            #sidebar span {
+                display: none;
+            }
+
+            #sidebar svg {
+                fill: black;
+                font-size: 1em;
+            }
+
+            #test-backdrop-1 {
+                background-image: url(./ambient_hype_2024\ \(1080p\)\ 3.jpg);
+                background-size: cover;
+            }
         }
 
         #test-backdrop-1 {
             width: 100%;
             height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         #test-backdrop-1 video {
             width: 100%;
             aspect-ratio: 16/9;
+            position: absolute;
+            top: 0;
+            z-index: -1;
         }
 
         #test-noti-1 {
@@ -146,96 +296,10 @@
             margin-right: 0.5em;
         }
 
-        #more {
-            width: calc(100% - 32px);
-            height: 157px;
-            margin-top: 43px;
-            margin-left: 16px;
-            border-bottom-right-radius: 10px;
+        #tb1-text {
             font-family: 'Figtree', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            display: flex;
-            overflow-x: scroll;
-            overflow-y: hidden;
-            justify-content: space-between;
-            scrollbar-width: none;
-        }
-
-        #more::-webkit-scrollbar {
-            width: none;
-        }
-
-        #more>div>div {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            column-gap: 15px;
-            margin-right: 30px;
-        }
-
-        .more-title {
-            font-weight: bold;
-        }
-
-        .more-item {
-            font-size: 20px;
-            white-space: nowrap;
-        }
-
-        #more-tip {
-            position: absolute;
-            bottom: 10px;
-            color: transparent;
-            transition: all 0.2s;
-        }
-
-        #more-tip svg {
-            height: 0.75em;
-            fill: none;
-            transition: all 0.2s;
-        }
-
-        #more.active #more-tip {
-            color: black;
-        }
-
-        #more.active #more-tip svg {
-            fill: black;
-        }
-
-        @media (max-width: 768px) {
-
-            .sidebar-item,
-            video {
-                display: none;
-            }
-
-            #top-bar.active {
-                height: calc(100vh - 30px);
-            }
-
-            #more.active {
-                width: calc(100% - 32px);
-                height: calc(100vh - 75px) !important;
-                display: grid;
-                overflow-x: hidden;
-                overflow-y: scroll;
-            }
-
-            #more>div>div {
-                display: unset;
-            }
-
-            .more-item {
-                white-space: unset;
-            }
-
-            #more-tip {
-                display: none;
-            }
-
-            #test-backdrop-1 {
-                background-image: url(./ambient_hype_2024\ \(1080p\)\ 3.jpg);
-                background-size: cover;
-            }
+            color: #fff;
+            font-size: 30px;
         }
     </style>
 </head>
@@ -244,8 +308,13 @@
     <div id="top-bar">
         <div id="sidebar">
             <div id="home"></div>
-            <div class="sidebar-item">
-                info for
+            <div class="sidebar-item" id="sidebar-info-for">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <path
+                        d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336l24 0 0-64-24 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l48 0c13.3 0 24 10.7 24 24l0 88 8 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-80 0c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
+                </svg>
+                <span>info for</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                     class="chevron-down"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
                     <path
@@ -282,7 +351,14 @@
             <div class="sidebar-item">libraries</div>
             <div class="sidebar-item">research</div>
             <div class="sidebar-item">student affairs</div>
-            <div class="sidebar-item">search</div>
+            <div class="sidebar-item" id="sidebar-search">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <path
+                        d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+                </svg>
+                <span>search</span>
+            </div>
         </div>
         <div id="more">
             <span id="more-tip">scroll right
@@ -356,6 +432,9 @@
     </div>
     <div id="test-backdrop-1">
         <video src="./ambient_hype_2024 (1080p).mp4" autoplay></video>
+        <div id="tb1-text">
+            <h3>Get Hyped, Hoos</h3>
+        </div>
     </div>
 </body>
 
