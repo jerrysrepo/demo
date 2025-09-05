@@ -110,13 +110,18 @@
             padding: 6px;
             border-radius: 6px;
             font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        #index-title-section {
+            margin-top: 40px;
+            margin-bottom: 40px;
         }
 
         #index-title {
             font-family: 'Figtree', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             font-size: 40px;
             font-weight: bold;
-            margin-top: 40px;
             text-align: center;
         }
 
@@ -164,6 +169,43 @@
             background-image: url(./rs=w_2046.png);
             background-size: cover;
         }
+
+        .index-subtitle {
+            font-size: 24px;
+        }
+
+        .index-subtitle ul {
+            list-style: none;
+            padding-left: 0;
+            margin-left: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .index-subtitle ul li {
+            display: block;
+            padding: 6px;
+            padding-left: 12px;
+            padding-right: 12px;
+            opacity: 0.5;
+        }
+
+        .posts-categ.highlighted {
+            opacity: 1;
+        }
+
+        .post-card-example {
+            width: calc(100% - 24px);
+            height: 100px;
+            border-radius: 6px;
+            padding: 12px;
+            background-image: linear-gradient(rgb(173, 223, 255), white);
+            background-size: cover;
+            background-position: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 
@@ -198,13 +240,34 @@
     </div>
     <main id="content-section">
         <div class="index-img"></div>
-        <div id="index-title">
-            Your go-to for all things horses.
+        <div id="index-title-section">
+            <div id="index-title">
+                Your go-to for all things horses.
+            </div>
+            <p class="normal-text second-text">
+                StreamHorseTV is your number one source for all information and updates related to horses.
+            </p>
         </div>
-        <p class="normal-text second-text">
-            StreamHorseTV is your number one source for all information and updates related to horses.
-        </p>
-
+        <div class="normal-text index-subtitle">
+            <ul id="posts-categ-list">
+                <li class="posts-categ" id="highlighted">All Posts</li>
+                <li class="posts-categ">Community Conversations</li>
+                <li class="posts-categ">Equestrian Lifestyle</li>
+                <li class="posts-categ">Equine Business & Finance</li>
+                <li class="posts-categ">Horse & Human Wellness</li>
+                <li class="posts-categ">Olympics</li>
+                <li class="posts-categ">Retiring & Retraining</li>
+                <li class="posts-categ">Rider's Lounge</li>
+            </ul>
+        </div>
+        <div class="post-card">
+            <div class="post-card-example normal-text">
+                13 YO Rodeo Queen Dies, Royals at Hampton Classic & Vet OTTB Pair
+            </div>
+            <div class="post-card-example normal-text">
+                74 Friesians Saved, Kentucky Hay Alert & Blenheim Eventing Begins
+            </div>
+        </div>
     </main>
     <script>
         $(document).ready(() => {
@@ -214,6 +277,9 @@
         $("#sidebar-collapse-button").click(() => {
             $("#sidebar").toggleClass("expanded");
             $("#content-section").toggleClass("shrink");
+        });
+        $(".posts-categ").hover(function () {
+            $(this).toggleClass("highlighted");
         });
     </script>
 </body>
